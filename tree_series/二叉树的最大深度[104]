@@ -1,0 +1,32 @@
+给定一个二叉树，找出其最大深度。
+
+二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+
+说明: 叶子节点是指没有子节点的节点。
+
+示例：
+给定二叉树 [3,9,20,null,null,15,7]，
+C++的解题思路如下所示：
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+#递归解法
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(!root) return 0;
+        int l_depth = maxDepth(root->left);
+        int r_depth = maxDepth(root->right);
+        int max_lr_depth = l_depth>r_depth?l_depth:r_depth;
+        return max_lr_depth+1;
+    }
+};
+
+
